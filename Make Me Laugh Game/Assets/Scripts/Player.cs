@@ -9,7 +9,9 @@ using UnityEngine;
 // When an instance of this class is created, a deck is automatically created for it if the decklist exists
 public class Player
 {
-    CardSystem cardSystem;
+    private CardSystem cardSystem;
+    public CardSystem CardSystem { get { return cardSystem; } }
+
     public string playerDeckName;
 
     // This is a custom constructor, denoted by a function with the exact same name as the owning class.
@@ -38,10 +40,13 @@ public class Player
 
             Debug.Log(playerDeckName);
 
+            int i = 0;
             foreach (Card card in cardsFromDeck.cards)
             {
                 Debug.Log(card.cardname);
+                card.cardid = i;
                 cardSystem.DeckCards.Add(card);
+                i++;
             }
 
             Debug.Log(playerName + " is live");

@@ -15,28 +15,28 @@ public static class ListManipulationFunctions
     // ListToTakeFrom = The list to move a card FROM
     // ListToMoveTo = The list to move the card TO
     // PositionToMoveTo = Either "start" to move the card to the front of the list or "end" to move the card to the end of the list
-    public static void MoveACardFromList(int CardIndex, List<Card> ListToTakeFrom, List<Card> ListToMoveTo, string PositionToMoveTo)
+    public static void MoveACardFromList(Card card, List<Card> ListToTakeFrom, List<Card> ListToMoveTo, string PositionToMoveTo)
     {
         PositionToMoveTo = PositionToMoveTo.ToUpper();
 
-        if (CardIndex >= 0 && CardIndex < ListToTakeFrom.Count)
-        {
+        //if (CardIndex >= 0 && CardIndex < ListToTakeFrom.Count)
+        //{
             switch (PositionToMoveTo)
             {
                 case "START":
-                    ListToMoveTo.Prepend(ListToTakeFrom[CardIndex]);
-                    ListToTakeFrom.RemoveAt(CardIndex);
+                    ListToMoveTo.Prepend(card);
+                    ListToTakeFrom.Remove(card);
                     break;
                 case "END":
-                    ListToMoveTo.Add(ListToTakeFrom[CardIndex]);
-                    ListToTakeFrom.RemoveAt(CardIndex);
+                    ListToMoveTo.Add(card);
+                    ListToTakeFrom.Remove(card);
                     break;
             }
-        }
-        else
-        {
-            Debug.Log("ERROR: CARD INDEX OUT OF BOUNDS - CANNOT ADD SINGULAR CARD TO LIST");
-        }
+        //}
+        //else
+        //{
+            //Debug.Log("ERROR: CARD INDEX OUT OF BOUNDS - CANNOT ADD SINGULAR CARD TO LIST");
+        //}
     }
 
     // Function to move a given number of cards from one list to another at the desired position. Calls "MoveACardFromList" function as many times as given.
@@ -56,13 +56,13 @@ public static class ListManipulationFunctions
                 case "START":
                     for (int i = 0; i < NumCardsToMove; i++)
                     {
-                        MoveACardFromList(0, ListToTakeFrom, ListToMoveTo, PositionToMoveTo);
+                        MoveACardFromList(ListToTakeFrom[0], ListToTakeFrom, ListToMoveTo, PositionToMoveTo);
                     }
                     break;
                 case "END":
-                    for (int i = 0; i < NumCardsToMove; i++)
-                    {
-                        MoveACardFromList(ListToMoveTo.Count - 1, ListToTakeFrom, ListToMoveTo, PositionToMoveTo);
+                    for (int i = 0; i < NumCardsToMove; i++)                                                                // NOTE: Can probably remove individual cases in favour of just one for loop since they
+                    {                                                                                                       //       do the same thing
+                        MoveACardFromList(ListToTakeFrom[0], ListToTakeFrom, ListToMoveTo, PositionToMoveTo);
                     }
                     break;
             }
