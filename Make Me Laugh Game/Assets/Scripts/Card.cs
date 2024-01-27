@@ -9,6 +9,7 @@ public readonly struct ActivationCosts
 
 public class Card : MonoBehaviour
 {
+    string cardName = "";
     int health = 0;
     int attack = 0;
     string type = "";
@@ -16,8 +17,9 @@ public class Card : MonoBehaviour
     string activationCost = "";
     List<string> effects = new List<string>();
 
-    public Card(int _health, int _attack, string _type, int _weighting, string _activationCost, List<string> _effects)
+    public Card(string _cardName, int _health, int _attack, string _type, int _weighting, string _activationCost, List<string> _effects)
     {
+        cardName = _cardName;
         health = _health;
         attack = _attack;
         type = _type;
