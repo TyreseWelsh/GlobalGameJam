@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
+public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler, IPointerExitHandler
 {
     private Image image;
     private Transform optionsPanel;
@@ -39,5 +39,8 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         image.raycastTarget = true;
     }
 
-
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        optionsPanel.gameObject.SetActive(false);
+    }
 }
