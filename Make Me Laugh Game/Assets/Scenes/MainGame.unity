@@ -1218,13 +1218,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardBase: {fileID: 781407221986229564, guid: 6b557c31d99984c479cccda2dd861853, type: 3}
-  playerHand: {fileID: 2548103880742699010, guid: 0b4d582a1ad20344f91708fb8063dbe4, type: 3}
-  opponentHand: {fileID: 174112894}
+  playerHand: {fileID: 1160714316}
+  playerField: {fileID: 1292233605}
+  opponentHand: {fileID: 174112896}
+  opponentField: {fileID: 1107855449}
 --- !u!224 &1160714315 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6280523455999625399, guid: 0b4d582a1ad20344f91708fb8063dbe4, type: 3}
   m_PrefabInstance: {fileID: 6630887856587507892}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1160714316 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3623994403437709583, guid: 0b4d582a1ad20344f91708fb8063dbe4, type: 3}
+  m_PrefabInstance: {fileID: 6630887856587507892}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1226842120
 GameObject:
   m_ObjectHideFlags: 0

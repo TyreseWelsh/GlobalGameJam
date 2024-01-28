@@ -17,18 +17,35 @@ public class Card
 {
     public CardState currentCardState = CardState.InDeck;
     public int owner;
-
     public int cardid;
+
     public string cardname;
     public string cardimage;
     public int health;
     public int attack;
     public string type;
     public int weighting;
-    public string activationCost;
+    public string activationcost;
     public string effectname;
     public int effectvalue;
     public string namedcard;
+    
+    public void Init(Card _card)
+    {
+        currentCardState = _card.currentCardState;
+        owner = _card.owner;
+        cardid = _card.cardid;
+        cardname = _card.cardname;
+        cardimage = _card.cardimage;
+        health = _card.health;
+        attack = _card.attack;
+        type = _card.type;
+        weighting = _card.weighting;
+        activationcost = _card.activationcost;
+        effectname = _card.effectname;
+        effectvalue = _card.effectvalue;
+        namedcard = _card.namedcard;
+    }
 
     // Dont think i actually need this constructor but will keep it regardless
     //public Card(int _cardid, string _cardname, string _cardimage, int _health, int _attack, string _type, int _weighting, string _activationCost, List<string> _effects)

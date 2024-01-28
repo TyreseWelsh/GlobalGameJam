@@ -44,7 +44,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         attack = _card.attack;
         cardType = _card.type;
         weighting = _card.weighting;
-        activationCost = _card.activationCost;
+        activationCost = _card.activationcost;
         effect = _card.effectname;
         effectvalue = _card.effectvalue;
         namedcard = _card.namedcard;

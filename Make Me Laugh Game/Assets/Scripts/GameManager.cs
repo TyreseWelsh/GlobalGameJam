@@ -24,7 +24,9 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject cardBase;
     [SerializeField] HorizontalLayoutGroup playerHand;
-    [SerializeField] GameObject opponentHand;
+    [SerializeField] HorizontalLayoutGroup playerField;
+    [SerializeField] HorizontalLayoutGroup opponentHand;
+    [SerializeField] HorizontalLayoutGroup opponentField;
 
     List<Player> m_players = new List<Player>();                                            // m_player[0] will also be the user
 
@@ -40,15 +42,10 @@ public class GameManager : MonoBehaviour
         ParsePlayerNames();
 
         user = m_players[0];
-        //currentOpponent = m_players[1];
+        currentOpponent = m_players[1];
 
-
-        GameObject newCard = Instantiate(cardBase, playerHand.transform);
-        CardVisualHandler currentCardVisuals = newCard.GetComponent<CardVisualHandler>();
-        currentCardVisuals.Init(user.CardSystem.DeckCards[0]);
-
-        //CardEffects.Draw(user, 5);
-        //CardEffects.Draw(currentOpponent, 5);
+        user.Draw(5);
+        currentOpponent.Draw(5);
     }
 
     // Update is called once per frame
@@ -65,10 +62,19 @@ public class GameManager : MonoBehaviour
         if (playerListJson != "")
         {
             Players allPlayers = JsonUtility.FromJson<Players>(playerListJson);
-
+            int i = 0;
             foreach (string playername in allPlayers.playernames)
             {
-                InstantiatePlayer(playername, cardBase, playerHand);
+                if(i == 0)
+                {
+                    InstantiatePlayer(playername, cardBase, playerHand, playerField);
+                }
+                else if(i > 0)
+                {
+                    InstantiatePlayer(playername, cardBase, opponentHand, opponentField);
+                }
+
+                i++;
             }
         }
         else
@@ -80,9 +86,9 @@ public class GameManager : MonoBehaviour
     // Used to create a new Player instance, constructed using the given playername
     // 1 Input Parameter
     // playername = The name of the player given by the designer and taken from the PlayerList.json file. Used to find appropriate deck for player.
-    void InstantiatePlayer(string _playerName, GameObject _cardBase, HorizontalLayoutGroup _playerHand)
+    void InstantiatePlayer(string _playerName, GameObject _cardBase, HorizontalLayoutGroup _playerHand, HorizontalLayoutGroup _playerField)
     {
-        Player playerToAdd = new Player(_playerName, _cardBase, _playerHand);
+        Player playerToAdd = new Player(_playerName, _cardBase, _playerHand, _playerField);
         m_players.Add(playerToAdd);
     }
 }

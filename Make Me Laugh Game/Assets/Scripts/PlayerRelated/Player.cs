@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using Unity.VisualScripting.FullSerializer;
 using UnityEditor.Callbacks;
 using UnityEditor.SceneManagement;
 using UnityEngine;
@@ -11,10 +13,13 @@ using UnityEngine.UI;
 public class Player
 {
     private List<Card>deckData;
-    public List<Card> DeckData{ get { return deckData; } }
+    public List<Card> DeckData{ get { return deckData; } set { deckData = value; } }
 
-    public List<GameObject> handCards;
-    public List<GameObject> fieldCards;
+    private List<GameObject> handCards;
+    public List<GameObject> HandCards { get { return handCards; } set { handCards = value; } }
+
+    private List<GameObject> fieldCards;
+    public List<GameObject> FieldCards { get { return fieldCards; } set { fieldCards = value; } }
 
     public string playerDeckName;
     public int weightLimit = 20;
@@ -23,15 +28,21 @@ public class Player
 
     GameObject cardBase;
     HorizontalLayoutGroup playerHand;
+    HorizontalLayoutGroup playerField;
 
     // This is a custom constructor, denoted by a function with the exact same name as the owning class.
     // This will be called automatically when a Player class instance is created with the parameters matching this one (a single string parameter)
     // Other constructors can be made with different parameters and allows you to do different things with the player data, depending on the number/order/type of parameters given
     // For example: public Player(int playerId) could be used if we wanted to create a player using their id instead of a name and you could provide different functionality in this new custom constructor
-    public Player(string _playerName, GameObject _cardBase, HorizontalLayoutGroup _playerHand)
+    public Player(string _playerName, GameObject _cardBase, HorizontalLayoutGroup _playerHand, HorizontalLayoutGroup _playerField)
     {
         cardBase = _cardBase;
         playerHand = _playerHand;
+        playerField = _playerField;
+
+        deckData = new List<Card>();
+        handCards = new List<GameObject>();
+        fieldCards = new List<GameObject>();
 
         CreateDeck(_playerName);
     }
@@ -42,25 +53,32 @@ public class Player
     void CreateDeck(string playerName)
     {
         string jsonFile = File.ReadAllText(Application.dataPath + "/Resources/" + playerName + ".json");
-        
+
         if(jsonFile != "")
         {
             Cards cardsFromDeck = JsonUtility.FromJson<Cards>(jsonFile);
 
             playerDeckName = cardsFromDeck.deckname;
 
-            //Debug.Log(playerDeckName);
-
+            Debug.Log(playerDeckName);
             int i = 0;
+            //for (int i = 0; i < cardsFromDeck.cards.Length; i++)
+            //{
+            //    Debug.Log("id=" + i.ToString() + " - " + cardsFromDeck.cards[i].cardname);
+            //    cardsFromDeck.cards[i].cardid = i;
+            //    Card newCard = new Card();
+            //    newCard.Init(cardsFromDeck.cards[i]);
+            //    deckData.Add(newCard);
+            //}
             foreach (Card card in cardsFromDeck.cards)
             {
-                //Debug.Log(card.cardname);
                 card.cardid = i;
                 deckData.Add(card);
                 i++;
             }
 
             //Debug.Log(playerName + " is live");
+            ListManipulationFunctions.ShuffleList(deckData);
         }
         else
         {
@@ -84,6 +102,8 @@ public class Player
         {
             for (int i = 0; i < amountToDraw; i++)
             {
+                Debug.Log(deckData.Count);
+
                 GameObject newCard = GameObject.Instantiate(cardBase, playerHand.transform);
                 CardController currentCardController = newCard.GetComponent<CardController>();
                 currentCardController.Init(deckData[0]);
@@ -115,6 +135,8 @@ public class Player
                 deckData.Remove(card);
             }
         }
+
+        ListManipulationFunctions.ShuffleList(deckData);
     }
 
     public void BoostAttack(GameObject targetCard, int buffValue)
