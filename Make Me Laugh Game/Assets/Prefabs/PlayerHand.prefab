@@ -393,6 +393,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed2f9bb9f6c3f2c4bbd5942a7879e538, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 0
+  health: 0
+  attack: 0
+  currentCardState: 0
 --- !u!1 &2548103880742699010
 GameObject:
   m_ObjectHideFlags: 0
@@ -412,7 +416,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6280523455999625399
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1024,6 +1028,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed2f9bb9f6c3f2c4bbd5942a7879e538, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 0
+  health: 0
+  attack: 0
+  currentCardState: 0
 --- !u!1 &4320285989911476514
 GameObject:
   m_ObjectHideFlags: 0

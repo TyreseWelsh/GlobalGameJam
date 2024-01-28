@@ -17,10 +17,23 @@ public class CardVisualHandler : MonoBehaviour
 
     public void UpdateVisuals (Card _cardData)
     {
-        print("Updating Card Visuals...");
         cardName.text = _cardData.cardname;
-        cardHealth.text = _cardData.health.ToString();
-        cardAttack.text = _cardData.attack.ToString();
+        if (_cardData.health < 0)
+        {
+            cardHealth.text = " ";
+        }
+        else
+        {
+            cardHealth.text = _cardData.health.ToString();
+        }
+        if (_cardData.attack < 0)
+        {
+            cardAttack.text = " ";
+        }
+        else
+        {
+            cardAttack.text = _cardData.attack.ToString();
+        }
         cardWeight.text = _cardData.weighting.ToString();
         cardEffect.text = "PlaceHolder Effect";
 

@@ -3,40 +3,56 @@
 	"cards": [
 		{
 			"cardname":"LittleRat01",
-			"cardimage":"null",
+			"cardimage":"",
 			"health":2,
 			"attack":1,
 			"type":"Rat",
 			"weighting":1,
 			"effectname":"Draw",
+			"positive":true,
 			"targeting":false,
 			"effectvalue": 1,
-			"namedcard":"null"
+			"namedcard":""
 		},
 		{
 			"cardname":"LittleRat01",
-			"cardimage":"null",
+			"cardimage":"",
 			"health":2,
 			"attack":1,
 			"type":"Rat",
 			"weighting":1,
 			"effectname":"Draw",
+			"positive":true,
 			"targeting":false,
 			"effectvalue":1,
-			"namedcard":"null"
+			"namedcard":""
 
 		},
 		{
 			"cardname":"LittleRat01",
-			"cardimage":"null",
+			"cardimage":"",
 			"health":2,
 			"attack":1,
 			"type":"Rat",
 			"weighting":1,
 			"effectname":"Draw",
+			"positive":true,
 			"targeting":false,
 			"effectvalue":1,
-			"namedcard":"null"
+			"namedcard":""
+		},
+		{
+			"cardname":"LittleRat02",
+			"cardimage":"",
+			"health":3,
+			"attack":1,
+			"type":"Rat",
+			"weighting":2,
+			"effectname":"BuffAttack",
+			"positive":true,
+			"targeting":true,
+			"effectvalue":1,
+			"namedcard":""
 		},
 		{
 			"cardname":"LittleRat02",
@@ -46,178 +62,180 @@
 			"type":"Rat",
 			"weighting":2,
 			"effectname":"BuffAttack",
+			"positive":true,
 			"targeting":true,
 			"effectvalue":1,
-			"namedcard":"null"
+			"namedcard":""
 		},
 		{
 			"cardname":"LittleRat02",
-			"cardimage":"null",
+			"cardimage":"",
 			"health":3,
 			"attack":1,
 			"type":"Rat",
 			"weighting":2,
 			"effectname":"BuffAttack",
+			"positive":true,
 			"targeting":true,
 			"effectvalue":1,
-			"namedcard":"null"
-		},
-		{
-			"cardname":"LittleRat02",
-			"cardimage":"null",
-			"health":3,
-			"attack":1,
-			"type":"Rat",
-			"weighting":2,
-			"effectname":"BuffAttack",
-			"targeting":true,
-			"effectvalue":1,
-			"namedcard":"null"
+			"namedcard":""
 		},
 		{
 			"cardname":"LittleRat03",
-			"cardimage":"null",
+			"cardimage":"",
 			"health":5,
 			"attack":2,
 			"type":"Rat",
 			"weighting":3,
 			"effectname":"DebuffAttack",
+			"positive":false,
 			"targeting":true,
 			"effectvalue":1,
-			"namedcard":"null"
+			"namedcard":""
 		},
 		{
 			"cardname":"LittleRat03",
-			"cardimage":"null",
+			"cardimage":"",
 			"health":5,
 			"attack":2,
 			"type":"Rat",
 			"weighting":3,
 			"effectname":"DebuffAttack",
+			"positive":false,
 			"targeting":true,
 			"effectvalue": 1,
-			"namedcard":"null"
+			"namedcard":""
 		},
 		{
 			"cardname":"LittleRat03",
-			"cardimage":"null",
+			"cardimage":"",
 			"health":5,
 			"attack":2,
 			"type":"Rat",
 			"weighting":3,
 			"effectname":"DebuffAttack",
+			"positive":false,
 			"targeting":true,
 			"effectvalue":1,
-			"namedcard":"null"
+			"namedcard":""
 		},
 
 		{
 			"cardname":"LittleRat04",
-			"cardimage":"null",
+			"cardimage":"",
 			"health":4,
 			"attack":2,
 			"type":"Rat",
 			"weighting":3,
 			"effectname":"DebuffHealth",
+			"positive":false,
 			"targeting":true,
 			"effectvalue":1,
 			"namedcard":"LittleRat"
 		},
 		{
 			"cardname":"LittleRat04",
-			"cardimage":"null",
+			"cardimage":"",
 			"health":4,
 			"attack":2,
 			"type":"Rat",
 			"weighting":3,
 			"effectname":"DebuffHealth",
+			"positive":false,
 			"targeting":true,
 			"effectvalue":1,
 			"namedcard":"LittleRat"
 		},
 		{
 			"cardname":"LittleRat04",
-			"cardimage":"null",
+			"cardimage":"",
 			"health":4,
 			"attack":2,
 			"type":"Rat",
 			"weighting":3,
 			"effectname":"DebuffHealth",
+			"positive":false,
 			"targeting":true,
 			"effectvalue":1,
 			"namedcard":"LittleRat"
 		},
 		{
 			"cardname":"BigRat01",
-			"cardimage":"null",
+			"cardimage":"",
 			"health":10,
 			"attack":3,
 			"type":"Rat",
 			"weighting":8,
 			"effectname":"AddToHand",
+			"positive":true,
 			"targeting":false,
 			"effectvalue":1,
 			"namedcard":"LittleRat"
 		},
 		{
 			"cardname":"BigRat01",
-			"cardimage":"null",
+			"cardimage":"",
 			"health":10,
 			"attack":3,
 			"type":"Rat",
 			"weighting":8,
 			"effectname":"AddToHand",
+			"positive":true,
 			"targeting":false,
 			"effectvalue":1,
 			"namedcard":"LittleRat"
 		},
 		{
 			"cardname": "Action03",
-			"cardimage": "null",
-			"health":-1,
-			"attack":-1,
+			"cardimage": "",
+			"health":-100,
+			"attack":-100,
 			"type": "Action",
 			"weighting": 3,
 			"effectname": "BoostAllAlliesealth",
+			"positive":true,
 			"targeting":false,
 			"effectvalue": 2,
-			"namedcard": "null"
+			"namedcard": ""
 		},
 		{
 			"cardname": "Action04",
-			"cardimage": "null",
-			"health":-1,
-			"attack":-1,
+			"cardimage": "",
+			"health":-100,
+			"attack":-100,
 			"type": "Action",
 			"weighting": 1,
 			"effectname": "Draw",
+			"positive":true,
 			"targeting":false,
 			"effectvalue": 2,
-			"namedcard": "null"
+			"namedcard": ""
 		},
 		{
 			"cardname": "Action05",
-			"cardimage": "null",
-			"health":-1,
-			"attack":-1,
+			"cardimage": "",
+			"health":-100,
+			"attack":-100,
 			"type": "Action",
 			"weighting": 2,
 			"effectname": "BoostAllAlliesAttack",
+			"positive":true,
 			"targeting":false,
 			"effectvalue": 3,
-			"namedcard": "null"
+			"namedcard": ""
 		},
 		{
 			"cardname": "BleedingEdgeManchego",
-			"cardimage": "null",
+			"cardimage": "",
 			"health": 20,
 			"attack": 10,
 			"type": "Rat",
 			"weighting": 4,
 			"effectname": "BoostAllAlliesHealth",
+			"positive":true,
 			"targeting":false,
 			"effectvalue": 4,
-			"namedcard": "null"
+			"namedcard": ""
 		}
 	]
 }

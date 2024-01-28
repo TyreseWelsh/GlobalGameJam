@@ -8,5 +8,6 @@ using UnityEngine;
 public class Cards
 {
     public string deckname;
+    public bool isuser;
     public Card[] cards;
 }

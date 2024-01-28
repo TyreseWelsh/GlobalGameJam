@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum CardState
 {
     InDeck,
     InHand,
-    OnBoard,
+    OnField,
     InChoiceList
 }
 
@@ -18,6 +19,8 @@ public class Card
     public CardState currentCardState = CardState.InDeck;
     public int owner;
     public int cardid;
+    public HorizontalLayoutGroup owningHand;
+    public HorizontalLayoutGroup owningField;
 
     public string cardname;
     public string cardimage;
@@ -25,8 +28,9 @@ public class Card
     public int attack;
     public string type;
     public int weighting;
-    public string activationcost;
     public string effectname;
+    public bool positive;
+    public bool targeting;
     public int effectvalue;
     public string namedcard;
     
@@ -41,8 +45,9 @@ public class Card
         attack = _card.attack;
         type = _card.type;
         weighting = _card.weighting;
-        activationcost = _card.activationcost;
         effectname = _card.effectname;
+        positive = _card.positive;
+        targeting = _card.targeting;
         effectvalue = _card.effectvalue;
         namedcard = _card.namedcard;
     }

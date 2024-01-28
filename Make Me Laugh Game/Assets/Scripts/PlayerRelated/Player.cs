@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Unity.VisualScripting;
 using Unity.VisualScripting.FullSerializer;
 using UnityEditor.Callbacks;
 using UnityEditor.SceneManagement;
@@ -22,13 +23,16 @@ public class Player
     public List<GameObject> FieldCards { get { return fieldCards; } set { fieldCards = value; } }
 
     public string playerDeckName;
-    public int weightLimit = 20;
+    public int playerHealth = 40;
+    //public int weightLimit = 20;
     public int maxWeighting = 1;
     public int currentWeighting = 1;
 
     GameObject cardBase;
     HorizontalLayoutGroup playerHand;
     HorizontalLayoutGroup playerField;
+
+    bool isUser;
 
     // This is a custom constructor, denoted by a function with the exact same name as the owning class.
     // This will be called automatically when a Player class instance is created with the parameters matching this one (a single string parameter)
@@ -59,25 +63,18 @@ public class Player
             Cards cardsFromDeck = JsonUtility.FromJson<Cards>(jsonFile);
 
             playerDeckName = cardsFromDeck.deckname;
+            isUser = cardsFromDeck.isuser;
 
-            Debug.Log(playerDeckName);
             int i = 0;
-            //for (int i = 0; i < cardsFromDeck.cards.Length; i++)
-            //{
-            //    Debug.Log("id=" + i.ToString() + " - " + cardsFromDeck.cards[i].cardname);
-            //    cardsFromDeck.cards[i].cardid = i;
-            //    Card newCard = new Card();
-            //    newCard.Init(cardsFromDeck.cards[i]);
-            //    deckData.Add(newCard);
-            //}
             foreach (Card card in cardsFromDeck.cards)
             {
                 card.cardid = i;
+                card.owningHand = playerHand;
+                card.owningField = playerField;
                 deckData.Add(card);
                 i++;
             }
 
-            //Debug.Log(playerName + " is live");
             ListManipulationFunctions.ShuffleList(deckData);
         }
         else
@@ -102,11 +99,9 @@ public class Player
         {
             for (int i = 0; i < amountToDraw; i++)
             {
-                Debug.Log(deckData.Count);
-
                 GameObject newCard = GameObject.Instantiate(cardBase, playerHand.transform);
                 CardController currentCardController = newCard.GetComponent<CardController>();
-                currentCardController.Init(deckData[0]);
+                currentCardController.Init(deckData[0], this);
                 currentCardController.currentCardState = CardState.InHand;
                 handCards.Add(newCard);
 
@@ -129,7 +124,7 @@ public class Player
             {
                 GameObject newCard = GameObject.Instantiate(cardBase, playerHand.transform);
                 CardController currentCardController = newCard.GetComponent<CardController>();
-                currentCardController.Init(card);
+                currentCardController.Init(card, this);
                 currentCardController.currentCardState = CardState.InHand;
 
                 deckData.Remove(card);
@@ -137,6 +132,26 @@ public class Player
         }
 
         ListManipulationFunctions.ShuffleList(deckData);
+    }
+
+    public void BasicAttack(Player opponent, GameObject attacker, GameObject defender)
+    {
+        CardController attackerCard = attacker.GetComponent<CardController>();
+        CardController defenderCard = defender.GetComponent<CardController>();
+
+        defenderCard.health -= attackerCard.attack;
+        attackerCard.health -= defenderCard.attack;
+
+        if (defenderCard.health <= 0)
+        {
+            opponent.FieldCards.Remove(defender);
+            GameObject.Destroy(defenderCard);
+        }
+        if (attackerCard.health <= 0)
+        {
+            FieldCards.Remove(attacker);
+            GameObject.Destroy(attackerCard);
+        }
     }
 
     public void BoostAttack(GameObject targetCard, int buffValue)

@@ -1,4 +1,5 @@
 { "deckname":"TheRatPack",
+	"isuser":false,
 	"cards": [
 		{
 			"cardname":"LittleRat01",
