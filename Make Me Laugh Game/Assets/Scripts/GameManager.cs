@@ -2,17 +2,53 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.UI;
+
+enum Turn
+{
+    player,
+    opponent
+}
+
+enum TurnPhase
+{
+    Draw,
+    Open,
+    Targeting,
+    Battle,
+    End
+}
 
 // Game Manager class I think will be used to manage the players and the current game state
 public class GameManager : MonoBehaviour
 {
-    List<Player> m_players = new List<Player>();
+    [SerializeField] GameObject cardBase;
+    [SerializeField] HorizontalLayoutGroup playerHand;
+    [SerializeField] GameObject opponentHand;
+
+    List<Player> m_players = new List<Player>();                                            // m_player[0] will also be the user
+
+    Turn currentTurn = Turn.player;
+    int currentTurnNum = 0;
+    Player user;
+    Player currentOpponent;
 
     // Start is called before the first frame update
     void Start()
     {
         print("GameManager is live");
         ParsePlayerNames();
+
+        user = m_players[0];
+        //currentOpponent = m_players[1];
+
+
+        GameObject newCard = Instantiate(cardBase, playerHand.transform);
+        CardVisualHandler currentCardVisuals = newCard.GetComponent<CardVisualHandler>();
+        currentCardVisuals.Init(user.CardSystem.DeckCards[0]);
+
+        //CardEffects.Draw(user, 5);
+        //CardEffects.Draw(currentOpponent, 5);
     }
 
     // Update is called once per frame

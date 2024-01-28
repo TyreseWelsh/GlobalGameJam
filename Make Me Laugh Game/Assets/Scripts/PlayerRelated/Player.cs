@@ -14,6 +14,9 @@ public class Player
 
     public string playerDeckName;
 
+    public int maxWeighting = 1;
+    public int currentWeighting = 1;
+
     // This is a custom constructor, denoted by a function with the exact same name as the owning class.
     // This will be called automatically when a Player class instance is created with the parameters matching this one (a single string parameter)
     // Other constructors can be made with different parameters and allows you to do different things with the player data, depending on the number/order/type of parameters given
@@ -38,22 +41,28 @@ public class Player
 
             playerDeckName = cardsFromDeck.deckname;
 
-            Debug.Log(playerDeckName);
+            //Debug.Log(playerDeckName);
 
             int i = 0;
             foreach (Card card in cardsFromDeck.cards)
             {
-                Debug.Log(card.cardname);
+                //Debug.Log(card.cardname);
                 card.cardid = i;
                 cardSystem.DeckCards.Add(card);
                 i++;
             }
 
-            Debug.Log(playerName + " is live");
+            //Debug.Log(playerName + " is live");
         }
         else
         {
             Debug.Log("ERROR: COULD NOT FIND " + playerName + " FILE");
         }
+    }
+
+    public void EndTurn()
+    {
+        maxWeighting++;
+        currentWeighting = maxWeighting;
     }
 }

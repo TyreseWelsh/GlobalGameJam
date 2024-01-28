@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 // This class holds functions that can be called to cause different effects during a duel
 public static class CardEffects
 {
+   
+
     // A function to move a number of cards from the top of the players deck to the hand
     public static void Draw(Player targetPlayer, int amountToDraw)
     {

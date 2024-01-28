@@ -1,6 +1,7 @@
 { "deckname":"TheRatPack",
  "cards":[
 	{
+	 "owner":0,
 	 "cardname":"LittleRat01",
 	 "cardimage":"",
 	 "health":3,
@@ -16,6 +17,7 @@
 		}]
 	},
 	{
+	 "owner":0,
 	 "cardname":"LittleRat02",
 	 "cardimage":"",
 	 "health":3,
@@ -31,6 +33,7 @@
 		}]
 	},
 	{
+	 "owner":0,
 	 "cardname":"LittleRat03",
 	 "cardimage":"",
 	 "health":3,
@@ -46,6 +49,7 @@
 		}]
 	},
 	{
+	 "owner":0,
 	 "cardname":"BigRat01",
 	 "cardimage":"",
 	 "health":5,
@@ -61,6 +65,7 @@
 		}]
 	},
 	{
+	 "owner":0,
 	 "cardname":"BigRat02",
 	 "cardimage":"",
 	 "health":5,

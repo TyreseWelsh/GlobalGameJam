@@ -17,6 +17,7 @@ public enum CardState
 public class Card
 {
     public CardState currentCardState = CardState.InDeck;
+    public int owner;
 
     public int cardid;
     public string cardname;
@@ -29,16 +30,16 @@ public class Card
     public List<string> effects;
 
     // Dont think i actually need this constructor but will keep it regardless
-    public Card(int _cardid, string _cardname, string _cardimage, int _health, int _attack, string _type, int _weighting, string _activationCost, List<string> _effects)
-    {
-        cardid = _cardid;
-        cardname = _cardname;
-        cardimage = _cardimage;
-        health = _health;
-        attack = _attack;
-        type = _type;
-        weighting = _weighting;
-        activationCost = _activationCost;
-        effects = _effects;
-    }
+    //public Card(int _cardid, string _cardname, string _cardimage, int _health, int _attack, string _type, int _weighting, string _activationCost, List<string> _effects)
+    //{
+    //    cardid = _cardid;
+    //    cardname = _cardname;
+    //    cardimage = _cardimage;
+    //    health = _health;
+    //    attack = _attack;
+    //    type = _type;
+    //    weighting = _weighting;
+    //    activationCost = _activationCost;
+    //    effects = _effects;
+    //}
 }
