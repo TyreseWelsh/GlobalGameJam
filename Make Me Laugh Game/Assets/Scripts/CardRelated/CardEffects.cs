@@ -12,7 +12,7 @@ public static class CardEffects
     // A function to move a number of cards from the top of the players deck to the hand
     public static void Draw(Player targetPlayer, int amountToDraw)
     {
-        if(targetPlayer.CardSystem.DeckCards.Count >= amountToDraw)
+        if(targetPlayer.DeckData.Count >= amountToDraw)
         {
             for (int i = 0; i < amountToDraw; i++)
             {

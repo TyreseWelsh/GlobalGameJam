@@ -7,7 +7,6 @@ public enum CardState
     InDeck,
     InHand,
     OnBoard,
-    InGrave,
     InChoiceList
 }
 
@@ -27,7 +26,9 @@ public class Card
     public string type;
     public int weighting;
     public string activationCost;
-    public List<string> effects;
+    public string effectname;
+    public int effectvalue;
+    public string namedcard;
 
     // Dont think i actually need this constructor but will keep it regardless
     //public Card(int _cardid, string _cardname, string _cardimage, int _health, int _attack, string _type, int _weighting, string _activationCost, List<string> _effects)

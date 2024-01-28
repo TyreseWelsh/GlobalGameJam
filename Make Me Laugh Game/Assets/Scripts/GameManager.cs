@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
 
             foreach (string playername in allPlayers.playernames)
             {
-                InstantiatePlayer(playername);
+                InstantiatePlayer(playername, cardBase, playerHand);
             }
         }
         else
@@ -80,9 +80,9 @@ public class GameManager : MonoBehaviour
     // Used to create a new Player instance, constructed using the given playername
     // 1 Input Parameter
     // playername = The name of the player given by the designer and taken from the PlayerList.json file. Used to find appropriate deck for player.
-    void InstantiatePlayer(string playerName)
+    void InstantiatePlayer(string _playerName, GameObject _cardBase, HorizontalLayoutGroup _playerHand)
     {
-        Player playerToAdd = new Player(playerName);
+        Player playerToAdd = new Player(_playerName, _cardBase, _playerHand);
         m_players.Add(playerToAdd);
     }
 }

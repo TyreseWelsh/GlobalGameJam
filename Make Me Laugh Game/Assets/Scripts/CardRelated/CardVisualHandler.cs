@@ -7,17 +7,17 @@ public class CardVisualHandler : MonoBehaviour
 {
     Card cardData;
 
-    [SerializeField] TextMeshProUGUI cardName;
-    [SerializeField] TextMeshProUGUI cardHealth;
-    [SerializeField] TextMeshProUGUI cardAttack;
-    [SerializeField] TextMeshProUGUI cardWeight;
-    [SerializeField] TextMeshProUGUI cardEffect;
+    public TextMeshProUGUI cardName;
+    public TextMeshProUGUI cardHealth;
+    public TextMeshProUGUI cardAttack;
+    public TextMeshProUGUI cardWeight;
+    public TextMeshProUGUI cardEffect;
     int cardId;
     int cardOwner;
 
-    public void Init(Card _cardData)
+    public void UpdateVisuals (Card _cardData)
     {
-        print("Initialising card data...");
+        print("Updating Card Visuals...");
         cardName.text = _cardData.cardname;
         cardHealth.text = _cardData.health.ToString();
         cardAttack.text = _cardData.attack.ToString();
